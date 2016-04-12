@@ -106,6 +106,18 @@ public class InstanceParser
     }
 
     /**
+     * Parses the Java block and returns a {@link List} of {@link Statement}s
+     * that represents it.
+     *
+     * @return Statement representing the Java statement
+     * @throws ParseException
+     *             if the source code has parser errors
+     */
+    public List<?> parseStatements() throws ParseException {
+        return astParser.Statements();
+    }
+
+    /**
      * Parses the Java statement and returns a {@link Statement} that represents
      * it.
      *
@@ -163,6 +175,22 @@ public class InstanceParser
      */
     public BodyDeclaration parseBodyDeclaration() throws ParseException {
         return astParser.AnnotationBodyDeclaration();
+    }
+
+    /**
+     * Parses the Java body declaration(e.g fields or methods) and returns a
+     * {@link BodyDeclaration} that represents it.
+     *
+     * @param isInterface
+     *            whether the parsed source code is an interface.
+     *
+     * @return BodyDeclaration representing the Java body
+     * @throws ParseException
+     *             if the source code has parser errors
+     */
+    public BodyDeclaration parseClassOrInterfaceBodyDeclaration(
+            boolean isInterface) throws ParseException {
+        return astParser.ClassOrInterfaceBodyDeclaration(isInterface);
     }
 
 }
