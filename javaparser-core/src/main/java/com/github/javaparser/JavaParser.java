@@ -117,7 +117,7 @@ public final class JavaParser {
         try {
             String code = SourcesHelper.streamToString(in, encoding);
             InputStream in1 = SourcesHelper.stringToStream(code, encoding);
-            CompilationUnit cu = new InstanceParser(in1).parse();
+            CompilationUnit cu = new InstanceJavaParser(in1).parse();
             if (considerComments){
                 commentsInserter().insertComments(cu, code);
             }
@@ -191,7 +191,7 @@ public final class JavaParser {
         try {
             String code = SourcesHelper.readerToString(reader);
             Reader reader1 = SourcesHelper.stringToReader(code);
-            CompilationUnit cu = new InstanceParser(reader1).parse();
+            CompilationUnit cu = new InstanceJavaParser(reader1).parse();
             if (considerComments){
                 commentsInserter().insertComments(cu, code);
             }
@@ -214,7 +214,7 @@ public final class JavaParser {
     public static BlockStmt parseBlock(final String blockStatement)
             throws ParseException {
         StringReader sr = new StringReader(blockStatement);
-        BlockStmt result = new InstanceParser(sr).parseBlock();
+        BlockStmt result = new InstanceJavaParser(sr).parseBlock();
         sr.close();
         return result;
     }
@@ -231,7 +231,7 @@ public final class JavaParser {
      */
     public static Statement parseStatement(final String statement) throws ParseException {
         StringReader sr = new StringReader(statement);
-        Statement stmt = new InstanceParser(sr).parseStatement();
+        Statement stmt = new InstanceJavaParser(sr).parseStatement();
         sr.close();
         return stmt;
     }
@@ -248,7 +248,7 @@ public final class JavaParser {
      */
     public static ImportDeclaration parseImport(final String importDeclaration) throws ParseException {
         StringReader sr = new StringReader(importDeclaration);
-        ImportDeclaration id = new InstanceParser(sr).parseImport();
+        ImportDeclaration id = new InstanceJavaParser(sr).parseImport();
         sr.close();
         return id;
     }
@@ -265,7 +265,7 @@ public final class JavaParser {
      */
     public static Expression parseExpression(final String expression) throws ParseException {
         StringReader sr = new StringReader(expression);
-        Expression e = new InstanceParser(sr).parseExpression();
+        Expression e = new InstanceJavaParser(sr).parseExpression();
         sr.close();
         return e;
     }
@@ -282,7 +282,7 @@ public final class JavaParser {
      */
     public static AnnotationExpr parseAnnotation(final String annotation) throws ParseException {
         StringReader sr = new StringReader(annotation);
-        AnnotationExpr ae = new InstanceParser(sr).parseAnnotation();
+        AnnotationExpr ae = new InstanceJavaParser(sr).parseAnnotation();
         sr.close();
         return ae;
     }
@@ -299,7 +299,7 @@ public final class JavaParser {
      */
     public static BodyDeclaration parseBodyDeclaration(final String body) throws ParseException {
         StringReader sr = new StringReader(body);
-        BodyDeclaration bd = new InstanceParser(sr).parseBodyDeclaration();
+        BodyDeclaration bd = new InstanceJavaParser(sr).parseBodyDeclaration();
         sr.close();
         return bd;
     }

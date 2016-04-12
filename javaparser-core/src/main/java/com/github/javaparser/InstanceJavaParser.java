@@ -39,35 +39,35 @@ import com.github.javaparser.ast.stmt.Statement;
 /**
  * @author Sebastian Kuerten
  */
-public class InstanceParser
+public class InstanceJavaParser
 {
 
     private ASTParser astParser;
 
-    public InstanceParser(InputStream input)
+    public InstanceJavaParser(InputStream input)
     {
         astParser = new ASTParser(input);
     }
 
-    public InstanceParser(InputStream input, String encoding)
+    public InstanceJavaParser(InputStream input, String encoding)
     {
         astParser = new ASTParser(input, encoding);
     }
 
-    public InstanceParser(File file) throws FileNotFoundException
+    public InstanceJavaParser(File file) throws FileNotFoundException
     {
         InputStream input = new BufferedInputStream(new FileInputStream(file));
         astParser = new ASTParser(input);
     }
 
-    public InstanceParser(File file, String encoding)
+    public InstanceJavaParser(File file, String encoding)
             throws FileNotFoundException
     {
         InputStream input = new BufferedInputStream(new FileInputStream(file));
         astParser = new ASTParser(input, encoding);
     }
 
-    public InstanceParser(Reader reader)
+    public InstanceJavaParser(Reader reader)
     {
         astParser = new ASTParser(reader);
     }
