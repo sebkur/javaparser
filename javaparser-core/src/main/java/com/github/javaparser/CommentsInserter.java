@@ -39,8 +39,8 @@ import com.github.javaparser.ast.comments.LineComment;
 public class CommentsInserter
 {
 
-    private boolean _doNotAssignCommentsPreceedingEmptyLines = true;
-    private boolean _doNotConsiderAnnotationsAsNodeStartForCodeAttribution = false;
+    private boolean doNotAssignCommentsPreceedingEmptyLines = true;
+    private boolean doNotConsiderAnnotationsAsNodeStartForCodeAttribution = false;
 
     public void insertComments(CompilationUnit cu, String code)
             throws IOException {
@@ -51,21 +51,21 @@ public class CommentsInserter
     }
 
     public boolean getDoNotConsiderAnnotationsAsNodeStartForCodeAttribution() {
-        return _doNotConsiderAnnotationsAsNodeStartForCodeAttribution;
+        return doNotConsiderAnnotationsAsNodeStartForCodeAttribution;
     }
 
     public void setDoNotConsiderAnnotationsAsNodeStartForCodeAttribution(
             boolean doNotConsiderAnnotationsAsNodeStartForCodeAttribution) {
-        _doNotConsiderAnnotationsAsNodeStartForCodeAttribution = doNotConsiderAnnotationsAsNodeStartForCodeAttribution;
+        this.doNotConsiderAnnotationsAsNodeStartForCodeAttribution = doNotConsiderAnnotationsAsNodeStartForCodeAttribution;
     }
 
     public boolean getDoNotAssignCommentsPreceedingEmptyLines() {
-        return _doNotAssignCommentsPreceedingEmptyLines;
+        return doNotAssignCommentsPreceedingEmptyLines;
     }
 
     public void setDoNotAssignCommentsPreceedingEmptyLines(
             boolean doNotAssignCommentsPreceedingEmptyLines) {
-        _doNotAssignCommentsPreceedingEmptyLines = doNotAssignCommentsPreceedingEmptyLines;
+        this.doNotAssignCommentsPreceedingEmptyLines = doNotAssignCommentsPreceedingEmptyLines;
     }
 
     /**
@@ -124,7 +124,7 @@ public class CommentsInserter
             List<Comment> commentsInsideChild = new LinkedList<Comment>();
             for (Comment c : commentsToAttribute) {
                 if (PositionUtils.nodeContains(child, c,
-                        _doNotConsiderAnnotationsAsNodeStartForCodeAttribution)) {
+                        doNotConsiderAnnotationsAsNodeStartForCodeAttribution)) {
                     commentsInsideChild.add(c);
                 }
             }
@@ -157,7 +157,7 @@ public class CommentsInserter
         childrenAndComments.addAll(children);
         childrenAndComments.addAll(commentsToAttribute);
         PositionUtils.sortByBeginPosition(childrenAndComments,
-                _doNotConsiderAnnotationsAsNodeStartForCodeAttribution);
+                doNotConsiderAnnotationsAsNodeStartForCodeAttribution);
 
         for (Node thing : childrenAndComments) {
             if (thing instanceof Comment) {
@@ -167,7 +167,7 @@ public class CommentsInserter
                 }
             } else {
                 if (previousComment != null && !thing.hasComment()) {
-                    if (!_doNotAssignCommentsPreceedingEmptyLines
+                    if (!doNotAssignCommentsPreceedingEmptyLines
                             || !thereAreLinesBetween(previousComment, thing)) {
                         thing.setComment(previousComment);
                         attributedComments.add(previousComment);

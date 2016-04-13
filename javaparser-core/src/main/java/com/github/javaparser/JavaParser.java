@@ -52,27 +52,27 @@ public final class JavaParser {
         // hide the constructor
     }
 
-    private static boolean _doNotAssignCommentsPreceedingEmptyLines = true;
+    private static boolean doNotAssignCommentsPreceedingEmptyLines = true;
 
-    private static boolean _doNotConsiderAnnotationsAsNodeStartForCodeAttribution = false;
+    private static boolean doNotConsiderAnnotationsAsNodeStartForCodeAttribution = false;
 
     public static boolean getDoNotConsiderAnnotationsAsNodeStartForCodeAttribution()
     {
-        return _doNotConsiderAnnotationsAsNodeStartForCodeAttribution;
+        return doNotConsiderAnnotationsAsNodeStartForCodeAttribution;
     }
 
     public static void setDoNotConsiderAnnotationsAsNodeStartForCodeAttribution(boolean doNotConsiderAnnotationsAsNodeStartForCodeAttribution) {
-        _doNotConsiderAnnotationsAsNodeStartForCodeAttribution = doNotConsiderAnnotationsAsNodeStartForCodeAttribution;
+        JavaParser.doNotConsiderAnnotationsAsNodeStartForCodeAttribution = doNotConsiderAnnotationsAsNodeStartForCodeAttribution;
     }
 
     public static boolean getDoNotAssignCommentsPreceedingEmptyLines()
     {
-        return _doNotAssignCommentsPreceedingEmptyLines;
+        return doNotAssignCommentsPreceedingEmptyLines;
     }
 
     public static void setDoNotAssignCommentsPreceedingEmptyLines(boolean doNotAssignCommentsPreceedingEmptyLines)
     {
-        _doNotAssignCommentsPreceedingEmptyLines = doNotAssignCommentsPreceedingEmptyLines;
+        JavaParser.doNotAssignCommentsPreceedingEmptyLines = doNotAssignCommentsPreceedingEmptyLines;
     }
 
     /**
@@ -88,9 +88,9 @@ public final class JavaParser {
     private static CommentsInserter commentsInserter() {
         CommentsInserter commentsInserter = new CommentsInserter();
         commentsInserter.setDoNotAssignCommentsPreceedingEmptyLines(
-                _doNotAssignCommentsPreceedingEmptyLines);
+                doNotAssignCommentsPreceedingEmptyLines);
         commentsInserter.setDoNotConsiderAnnotationsAsNodeStartForCodeAttribution(
-                _doNotConsiderAnnotationsAsNodeStartForCodeAttribution);
+                doNotConsiderAnnotationsAsNodeStartForCodeAttribution);
         return commentsInserter;
     }
 
