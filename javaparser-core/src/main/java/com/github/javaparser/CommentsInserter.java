@@ -35,6 +35,7 @@ import com.github.javaparser.ast.comments.LineComment;
 
 /**
  * @author Sebastian Kuerten
+ * @author Júlio Vilmar Gesser
  */
 public class CommentsInserter
 {
